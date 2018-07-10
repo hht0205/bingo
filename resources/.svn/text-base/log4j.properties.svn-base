@@ -1,0 +1,43 @@
+# Set root logger level to error
+log4j.rootLogger=INFO, Console, File,MAIL
+
+###### Console appender definition #######
+
+# All outputs currently set to be a ConsoleAppender.
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c{3}] %m%n
+#log4j.appender.Console.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
+
+###### File appender definition #######
+log4j.appender.File.BufferedIO=true
+log4j.appender.File.BufferSize=102400
+log4j.appender.File=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.File.File=//usr/lottery/logs/spring.log
+#log4j.appender.File.File=logs/spring.log
+log4j.appender.File.Append=false
+log4j.appender.File.layout=org.apache.log4j.PatternLayout
+log4j.appender.File.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
+## MAIL
+log4j.appender.MAIL=org.apache.log4j.net.SMTPAppender
+# 记录error等级得错误
+log4j.appender.MAIL.Threshold=ERROR
+#当日志到达126k时，发送邮件
+log4j.appender.MAIL.BufferSize=1
+#邮件服务器
+log4j.appender.MAIL.SMTPHost=smtp.163.com
+#是否打印调试信息
+log4j.appender.MAIL.SMTPDebug=false
+#邮件主题
+log4j.appender.MAIL.Subject=200-Log4J ErrorMessage 
+#邮箱登陆账号
+log4j.appender.MAIL.SMTPUsername=yong19890810w@163.com
+#邮箱登陆密码
+log4j.appender.MAIL.SMTPPassword=zheng13092781461
+#邮件发送方
+log4j.appender.MAIL.From=yong19890810w@163.com
+#邮件接收方
+log4j.appender.MAIL.To=710731936@qq.com
+#日志显示格式
+log4j.appender.MAIL.layout=org.apache.log4j.PatternLayout  
+log4j.appender.MAIL.layout.ConversionPattern=[error] %d{yyyy-MM-dd HH:mm:ss} - %c -%-4r [%t] %-5p %c %x - %m%n

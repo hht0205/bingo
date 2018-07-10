@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" name="caipiaoCacheManager" >
+	<diskStore path="java.io.tmpdir"/>
+	<!-- <cacheManagerEventListenerFactory class="" properties=""/> -->
+	<defaultCache
+	            maxElementsInMemory="10000"
+	            eternal="false"
+	            timeToIdleSeconds="120"
+	            timeToLiveSeconds="120"
+	            overflowToDisk="true"
+	            diskSpoolBufferSizeMB="30"
+	            maxElementsOnDisk="10000000"
+	            diskPersistent="false"
+	            diskExpiryThreadIntervalSeconds="120"
+	            memoryStoreEvictionPolicy="LRU"
+	            />
+
+ <cache name="kaijiang"
+         maxElementsInMemory="100"
+         maxElementsOnDisk="10"
+         eternal="false"
+         timeToIdleSeconds="120"
+         timeToLiveSeconds="0"
+         memoryStoreEvictionPolicy="LFU">
+ <!-- <terracotta clustered="true"/>  -->
+
+  </cache>
+  
+ <cache name="award"
+         maxElementsInMemory="100"
+         maxElementsOnDisk="10"
+         eternal="false"
+         timeToIdleSeconds="120"
+         timeToLiveSeconds="0"
+         memoryStoreEvictionPolicy="LFU">
+
+<!-- <terracotta clustered="true"/>   -->
+
+</cache>
+  
+ <cache name="userMap"
+         maxElementsInMemory="100"
+         maxElementsOnDisk="100"
+         eternal="false"
+         timeToIdleSeconds="120"
+         timeToLiveSeconds="0"
+         memoryStoreEvictionPolicy="LFU">
+
+<!-- <terracotta clustered="true"/>   -->
+
+</cache>
+
+ <!-- <terracottaConfig url="192.168.3.114:9510"/> -->
+
+</ehcache>

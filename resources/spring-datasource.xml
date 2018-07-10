@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd ">
+
+    
+	<!-- =============================================================== -->
+	<!-- Resources                                                       -->
+	<!-- =============================================================== -->
+
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		
+		<property name="filters" value="stat" />	
+		<property name="driverClassName" value="${jdbcDriverClassName}" />
+		<property name="url" value="${jdbcUrl}" />
+		<property name="username" value="${jdbcUsername}" />
+		<property name="password" value="${jdbcPassword}" />
+		<property name="maxActive" value="${maxActive}" />
+		<property name="maxWait" value="${maxWait}" />  
+		<property name="initialSize" value="${initialSize}" />  
+		<property name="validationQuery" value="${validationQuery}" /> 
+    	<property name="testWhileIdle" value="${testWhileIdle}" />
+   	 	<property name="testOnBorrow" value="${testOnBorrow}" />
+    	<property name="testOnReturn" value="${testOnReturn}" />
+    	<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />  
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" /> 
+       
+         <!--取得的连接必须在removeAbandonedTimeout这么多秒内调用close(),要不我就弄死你.(就是conn不能超过指定的租期)-->
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="180" /><!--数据库链接超过3分钟开始关闭空闲连接 秒为单位-->
+		<property name="logAbandoned" value="true" /> <!-- 关闭abanded连接时输出错误日志 -->
+	</bean>
+	
+
+</beans>

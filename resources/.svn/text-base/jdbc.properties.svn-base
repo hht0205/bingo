@@ -1,0 +1,66 @@
+﻿#################### 交易系统  #####################
+
+#接收交易系统通知地址
+NotifyUrl=http://221.232.144.53:9888/Caipiao_ServerHB/recNotifyHC
+#NotifyUrl=http://221.232.144.53:9888/Caipiao_ServerHB/recNotifyHC  
+WebUrl=http://wnet.caipiaopiao.cn/User/UserPwdChange.aspx
+#接收充值通知地址
+NtfyUrl=http://221.232.144.53:9888/Caipiao_ServerHB/RecNotifyCZ
+#贺卡接口发送地址
+postCardUrl=http://218.108.132.245/api
+imageBasePath=http://service.caipiaopiao.cn:8089/CpManager/
+#推送通知消息发送地址
+SendMsgUrl=http://221.234.36.200:8060/pushServer/SendMsg
+#是否同步登录和注册论坛
+loginBBS=false
+#论坛安装地址
+BBSUrl=http://221.234.36.200:8070
+
+#订单号区分头PT普通HM合买ZH追号  SDM水电煤 CZ 充值 TX 提现 XYK信用卡 TEL手机充值  ZFB支付宝 GMC游戏卡 GMZ游戏直充  SC购物车
+OrderCZID=XSLCZ-
+OrderTXID=XSLTX-
+OrderPTID=XSLPT-
+OrderHMID=XSLHM-
+OrderZHID=XSLZH-
+OrderSDMID=HXSDM-
+OrderXYKID=HXXYK-
+OrderTELID=HXTEL-
+OrderZFBID=HXZFB-
+OrderGMCID=HXGMC-
+OrderGMZID=HXGMZ-
+OrderSCID=XSLSC-
+OrderCTCID=HXCTC-
+#电投系统默认使用版本号为1.0.0.0，若版本修正，或变更，将提前告知
+Version=1.0.0.0
+#命令码随不同的命令而定，具体码制参见详细接口说明  查询:1000 缴费:2000
+Command1=1000
+Command2=2000
+#商户账号、密码
+userid=A943590
+userpws=mingzhu0826
+
+#是否发送错误邮件
+SendMail=false
+#是否调试状态
+isdebug=true
+#日志文件夹
+logPath=D\:\\LOGS\\
+
+#####################JDBC Configuration #####################
+jdbcDriverClassName=com.mysql.jdbc.Driver
+jdbcUrl=jdbc:mysql://192.168.1.204/caipiaohbk?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+jdbcCharset=utf-8
+jdbcUsername=root
+jdbcPassword=123456
+#####################Druid 连接池 #####################
+initialSize=20
+maxActive=600
+validationQuery=SELECT 'x' />  
+testWhileIdle=true
+testOnBorrow=false 
+testOnReturn=false 
+timeBetweenEvictionRunsMillis=60000 
+minEvictableIdleTimeMillis=300000
+#配置获取连接等待超时的时间
+maxWait=60000
